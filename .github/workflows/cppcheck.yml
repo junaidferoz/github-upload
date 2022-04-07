@@ -11,18 +11,18 @@ jobs:
         uses: deep5050/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
-          check_library:
-          skip_preprocessor:
-          enable:
-          exclude_check:
-          inconclusive:
-          inline_suppression:
-          force_language:
-          force:
-          max_ctu_depth:
-          platform:
-          std:
-          output_file:
+          check_library: enable
+          skip_preprocessor: disable
+          enable: style,performance,portability
+          exclude_check: ./Arduino
+          inconclusive: enable
+          inline_suppression: disabe
+          force_language: c,c++
+          force: disable
+          max_ctu_depth: 2
+          platform: win64
+          std: c11,c++20
+          output_file: ./cppcheck_report.txt
 
       - name: publish report    
         uses: mikeal/publish-to-github-action@master
